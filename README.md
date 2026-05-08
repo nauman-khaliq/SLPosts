@@ -38,8 +38,8 @@ SLPosts showcases:
 
 ## Screenshots
 
-<img src="screenShots/screenShot1.jpg" alt="Screenshot 1" width="200" height="433"/> <img src="screenShots/screenShot2.jpg" alt="Screenshot 2" width="200" height="433"/>
-<img src="screenShots/screenShot3.jpg" alt="Screenshot 3" width="200" height="433"/> <img src="screenShots/screenShot4.jpg" alt="Screenshot 4" width="200" height="433"/>
+<img src="screenShots/screenShot1.jpeg" alt="Screenshot 1" width="200" height="433"/> <img src="screenShots/screenShot2.jpeg" alt="Screenshot 2" width="200" height="433"/>
+<img src="screenShots/screenShot3.jpeg" alt="Screenshot 3" width="200" height="433"/> <img src="screenShots/screenShot4.jpeg" alt="Screenshot 4" width="200" height="433"/>
 
 ## Getting Started
 
