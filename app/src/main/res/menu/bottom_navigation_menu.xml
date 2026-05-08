@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ MIT License
+  ~
+  ~ Copyright (c) 2024 Nauman Khaliq
+  -->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@id/postsFragment"
+        android:icon="@drawable/ic_message"
+        android:title="Posts" />
+
+    <item
+        android:id="@id/favouritePostsFragment"
+        android:icon="@drawable/ic_favorite_border_24"
+        android:title="Favourites" />
+
+    <item
+        android:id="@id/settingsFragment"
+        android:icon="@drawable/ic_settings"
+        android:title="Settings" />
+
+
+</menu>

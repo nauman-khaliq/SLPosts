@@ -1,0 +1,150 @@
+plugins {
+    id "com.android.application"
+    id "org.jetbrains.kotlin.android"
+    id "com.google.devtools.ksp"
+    id "dagger.hilt.android.plugin"
+    id "org.jlleitschuh.gradle.ktlint"
+    id "kotlin-parcelize"
+    id "androidx.navigation.safeargs.kotlin"
+}
+repositories {
+    maven { url 'https://jitpack.io' }
+}
+
+android {
+    compileSdkVersion 36
+    defaultConfig {
+        applicationId "com.naumankhaliq.slposts"
+        minSdk 23
+        targetSdk 36
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "com.naumankhaliq.slposts.CustomTestRunner"
+        testInstrumentationRunnerArguments useTestStorageService: 'true'
+    }
+    buildTypes {
+        debug {
+            initWith debug
+            applicationIdSuffix = ".debug"
+            debuggable true
+            buildConfigField "String", "BASE_URL", '"https://jsonplaceholder.typicode.com"'
+        }
+        release {
+            minifyEnabled true
+            debuggable false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "BASE_URL", '"https://jsonplaceholder.typicode.com"'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+    buildFeatures {
+        buildConfig true
+    }
+    buildFeatures.viewBinding true
+    namespace 'com.naumankhaliq.slposts'
+
+    // Always show the result of every unit test when running via command line, even if it passes.
+    testOptions.unitTests {
+        includeAndroidResources = true
+        returnDefaultValues = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    // Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:2.2.0"
+
+    // Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2'
+
+    // Android
+    implementation "androidx.appcompat:appcompat:1.7.1"
+    implementation "androidx.activity:activity-ktx:1.13.0"
+    implementation "androidx.fragment:fragment-ktx:1.8.9"
+    implementation "androidx.core:core-ktx:1.18.0"
+    implementation "androidx.constraintlayout:constraintlayout:2.2.1"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.2.0"
+    implementation "androidx.dynamicanimation:dynamicanimation-ktx:1.1.0"
+
+    // Architecture Components
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.4"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.9.4"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.9.4"
+
+    // Room components
+    implementation "androidx.room:room-runtime:2.8.1"
+    implementation "androidx.room:room-ktx:2.8.1"
+    ksp "androidx.room:room-compiler:2.8.1"
+
+    // Material Design
+    implementation 'com.google.android.material:material:1.13.0'
+
+    // Coil-kt
+    implementation 'io.coil-kt:coil:2.7.0'
+
+    // Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:3.0.0'
+    implementation 'com.squareup.retrofit2:converter-gson:3.0.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:5.3.2'
+
+    // Gson
+    implementation 'com.google.code.gson:gson:2.13.1'
+
+    // Hilt + Dagger
+    implementation 'com.google.dagger:hilt-android:2.57.2'
+    ksp 'com.google.dagger:hilt-compiler:2.57.2'
+
+    // For instrumentation tests
+    androidTestImplementation  'com.google.dagger:hilt-android-testing:2.57.2'
+    kspAndroidTest 'com.google.dagger:hilt-compiler:2.57.2'
+    androidTestUtil 'androidx.test.services:test-services:1.6.0'
+
+    // For local unit tests
+    testImplementation 'com.google.dagger:hilt-android-testing:2.57.2'
+    kspTest 'com.google.dagger:hilt-compiler:2.57.2'
+
+    // Testing
+    testImplementation "androidx.arch.core:core-testing:2.2.0"
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.2'
+    testImplementation "androidx.room:room-testing:2.8.4"
+    testImplementation 'com.squareup.okhttp3:mockwebserver:5.3.2'
+    androidTestImplementation 'com.squareup.okhttp3:mockwebserver:5.3.2'
+    testImplementation "junit:junit:4.13.2"
+    debugImplementation "androidx.fragment:fragment-testing:1.8.9"
+    testImplementation 'app.cash.turbine:turbine:1.2.1'
+
+    // Mockk or other mocking libraries (optional)
+    testImplementation "io.mockk:mockk:1.14.9"
+    androidTestImplementation "io.mockk:mockk:1.14.9"
+    testImplementation "org.robolectric:robolectric:4.16.1"
+
+    // Android Testing
+    androidTestImplementation "androidx.test.ext:junit-ktx:1.3.0" // for using activity scenario rule
+    testImplementation "androidx.test.ext:junit-ktx:1.3.0"
+    androidTestImplementation "androidx.test:core-ktx:1.7.0" // for launch activity activity scenario
+    testImplementation "androidx.test:core-ktx:1.7.0"
+    androidTestImplementation "androidx.test.espresso:espresso-core:3.7.0"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:3.7.0"
+    androidTestImplementation 'androidx.test:runner:1.7.0'
+    debugImplementation "androidx.test:monitor:1.8.0"
+    //Navigation Component
+    def nav_version = "2.9.5"
+    // Kotlin
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+    // Feature module Support
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
+    // Testing Navigation
+    androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
+    // Jetpack Compose Integration
+    implementation "androidx.navigation:navigation-compose:$nav_version"
+
+}

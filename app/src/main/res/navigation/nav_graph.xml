@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/postsFragment">
+
+    <fragment
+        android:id="@+id/postsFragment"
+        android:name="com.naumankhaliq.slposts.ui.home.posts.PostsFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_home">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/favouritePostsFragment"
+        android:name="com.naumankhaliq.slposts.ui.home.favourites.FavouritePostsFragment"
+        android:label="Favourites"
+        tools:layout="@layout/fragment_fav_posts">
+    </fragment>
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.naumankhaliq.slposts.ui.home.settings.SettingsFragment"
+        android:label="Settings"
+        tools:layout="@layout/fragment_settings">
+    </fragment>
+
+</navigation>
