@@ -34,7 +34,6 @@ SLPosts showcases:
 - **MockK** for mocking
 - **Robolectric** for Android component testing
 - **Espresso** for UI testing
-- **Turbine** for Flow testing
 
 ## Screenshots
 
